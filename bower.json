@@ -1,0 +1,21 @@
+{
+  "name": "klayjs-d3",
+  "version": "0.1.0",
+  "authors": [
+    "Ulf Rueegg <uru@informatik.uni-kiel.de>"
+  ],
+  "main": "dist/klayjs-d3.min.js",
+  "license": "EPL v1.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.4.9",
+    "klay-js": "~0.0.8"
+  }
+}
