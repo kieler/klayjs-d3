@@ -83,6 +83,12 @@ layouter.on("finish", function() {
 
 Examples 
 ===
+
+Running Examples:
+- [Miserables](http://openkieler.github.io/klayjs-d3/examples/miserables/) (Data From D3 Force Example)
+- [Ports](http://openkieler.github.io/klayjs-d3/examples/ports/)
+- [Hierarchy](http://openkieler.github.io/klayjs-d3/examples/hierarchy/)
+
 See the `examples` folder.
 
 You can easily run the examples locally using node's http-server.
