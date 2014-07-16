@@ -85,3 +85,9 @@ Examples
 ===
 See the `examples` folder.
 
+You can easily run the examples locally using node's http-server.
+```bash
+npm install -g http-server
+http-server .
+[open browser localhost:8080]
+```
