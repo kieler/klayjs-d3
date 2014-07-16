@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <title>klay-d3 example</title>
+  <script type="text/javascript" src="../../dist/klayjs-d3.js"></script>
+  <script type="text/javascript" src="../../bower_components/d3/d3.js"></script>
+  <style>
+    .node {
+      stroke: #fff;
+      stroke-width: 1px;
+    }
+    
+    .link {
+      stroke: #999;
+      stroke-opacity: .6;
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+<script>
+
+function viewport() {
+  var e = window,
+    a = 'inner';
+  if (!('innerWidth' in window)) {
+    a = 'client';
+    e = document.documentElement || document.body;
+  }
+  return {
+    width: e[a + 'Width'],
+    height: e[a + 'Height']
+  }
+}
+
+var width = viewport().width,
+    height = viewport().height;
+var color = d3.scale.category20();
+// add zooming
+var zoom = d3.behavior.zoom()
+    .on("zoom", redraw); 
+
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .call(zoom)
+    .append("g");
+
+// group shizzle
+var root = svg.append("g");
+
+var layouter = klay.d3adapter();
+
+// load the data and render the elements
+d3.json("miserables.json", function(error, graph) {
+
+  layouter
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .size([width, height])
+      .transformGroup(root)
+      .options({
+        edgeRouting: "ORTHOGONAL",
+        mergePorts: true
+      })
+      .start();
+
+  var link = root.selectAll(".link")
+      .data(graph.links)
+      .enter()
+      .append("path")
+      .attr("class", "link")
+      .attr("d", "M0 0")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = root.selectAll(".node")
+      .data(graph.nodes)
+      .enter()
+      .append("rect")
+      .attr("class", "node")
+      .attr("width", 10)
+      .attr("height", 10)
+      .attr("x", 0)
+      .attr("y", 0)
+      .style("fill", function(d) { return color(d.group); });
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  layouter.on("finish", function(d) {
+  
+    // apply edge routes
+    link.transition().attr("d", function(d) {
+      var path = "";
+      path += "M" + d.sourcePoint.x + " " + d.sourcePoint.y + " ";
+      d.bendPoints.forEach(function(bp, i) {
+        path += "L" + bp.x + " " + bp.y + " ";
+      });
+      path += "L" + d.targetPoint.x + " " + d.targetPoint.y + " ";
+      return path;
+    });
+  
+    // apply node positions
+    node.transition()
+      .attr("x", function(d) { return d.x; })
+      .attr("y", function(d) { return d.y; });
+    
+  });
+});
+
+function redraw() {
+  svg.attr("transform", "translate(" + d3.event.translate + ")" 
+                          + " scale(" + d3.event.scale + ")");
+};
+
+</script>

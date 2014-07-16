@@ -1,0 +1,31 @@
+{
+  "nodes": [{
+    "name": "Myriel",
+    "ports": [{
+      "id": "p1",
+      "properties": {
+        "portSide": "WEST"
+      }
+    }],
+    "properties": {
+      "portConstraints": "FIXED_SIDE"
+    }
+  }, {
+    "name": "Napoleon",
+    "ports": [{
+      "id": "p2",
+      "properties": {
+        "portSide": "WEST"
+      }
+    }],
+    "properties": {
+      "portConstraints": "FIXED_SIDE"
+    }
+  }],
+  "links": [{
+    "source": 0,
+    "sourcePort": "p1",
+    "targetPort": "p2",
+    "target": 1
+  }]
+}
