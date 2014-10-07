@@ -1,12 +1,6 @@
 var klay;
 (function (klay) {
 
-  // check if web worker is available
-  if (typeof window.Worker !== "function") {
-    window.alert("WebWorker not supported by browser.");
-    return {};
-  }
-
   klay.d3adapter = function() {
     return init("adapter");
   };
@@ -52,6 +46,11 @@ var klay;
     
     // use a worker or not?
     if ('<%= worker %>' === 'true') {
+      // check if web worker is available
+      if (typeof window == 'undefined' || typeof window.Worker !== "function") {
+        window.alert("WebWorker not supported by browser.");
+        return {};
+      }  
       var worker = new Worker(workerScriptPath + '/klayjs-worker.js'),
       layouter = {
         layout: function(data) {
@@ -66,7 +65,13 @@ var klay;
         applyLayout(graph);
       }, false);
     } else {
-      layouter = $klay;
+      
+      if (typeof module === "object" && module.exports) { 
+        layouter = require("klayjs");
+      } else {
+        // try to get from global scope
+        layouter = $klay;
+      }
     }
     
     /**
@@ -378,13 +383,20 @@ var klay;
   // during initial execution, remember the path of 
   // this script as we expect the worker script to be
   // in the same directory
-  var workerScriptPath = function() {
-    var scriptTag = document.getElementsByTagName('script');
-    scriptTag = scriptTag[scriptTag.length - 1]; 
-    var scriptPath = scriptTag.src; 
-    var scriptFolder = scriptPath.substr(0, scriptPath.lastIndexOf( '/' ) + 1);
-    return scriptFolder;
-  }();
+  var workerScriptPath;
+  if ('<%= worker %>' === 'true') {
+    workerScriptPath = function() {
+      var scriptTag = document.getElementsByTagName('script');
+      scriptTag = scriptTag[scriptTag.length - 1]; 
+      var scriptPath = scriptTag.src; 
+      var scriptFolder = scriptPath.substr(0, scriptPath.lastIndexOf( '/' ) + 1);
+      return scriptFolder;
+    }();
+  }
+
+  if (typeof module === "object" && module.exports) { 
+    module.exports = klay;
+  }
 
   return klay;
 })(klay || (klay = {}));
