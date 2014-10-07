@@ -107,6 +107,8 @@ d3.json("miserables.json", function(error, graph) {
       .attr("y", function(d) { return d.y; });
     
   });
+  
+  layouter.start();
 });
 
 function redraw() {

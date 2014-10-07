@@ -73,7 +73,6 @@ var layouter = klay.d3kgraph()
 // load the data and render the elements
 d3.json("hierarchy.json", function(error, graph) {
   
-  layouter.kgraph(graph);
 
   layouter.on("finish", function(d) {
     
@@ -123,6 +122,9 @@ d3.json("hierarchy.json", function(error, graph) {
       .attr("width", function(d) { return d.width; })
       .attr("height", function(d) { return d.height; });
   });
+  
+  layouter.kgraph(graph);
+  
 });
 
 function redraw() {

@@ -48,7 +48,7 @@ var klay;
     applyLayout = function() {},
     
     /** the layouter instance */
-    layouter = klay.init({
+    /*layouter = klay.init({
       onSuccess: function(kgraph) {
         if (kgraph.id) {
           graph = kgraph;
@@ -58,7 +58,8 @@ var klay;
         }
       },
       workerScript: workerScriptPath + "/klayjs-worker.js"
-    }); 
+    });*/
+    layouter = $klay;
     
     /**
      * Setting the available area, the 
@@ -173,7 +174,14 @@ var klay;
             children: nodes,
             edges: links
           },
-          "options": options
+          "options": options,
+          "success": function(kgraph) {
+            graph = kgraph;
+            applyLayout(kgraph);
+          },
+          "error": function(e) {
+            console.error(e);
+          }
         });
         
         return d3klay;  
@@ -228,7 +236,7 @@ var klay;
             }
           }  
         }  
-  
+
         // invoke the 'finish' event          
         dispatch.finish({graph: kgraph});  
       };
@@ -269,7 +277,14 @@ var klay;
         // start the layouter  
         layouter.layout({
           "graph": root,
-          "options": options
+          "options": options,
+          "success": function(kgraph) {
+            graph = kgraph;
+            applyLayout(kgraph);
+          },
+          "error": function(e) {
+            console.error(e);
+          }
         });  
          
         return d3klay;
@@ -347,7 +362,6 @@ var klay;
       }  
     }
 
-  
     // return the layouter object  
     return d3.rebind(d3klay, dispatch, "on");
   }
