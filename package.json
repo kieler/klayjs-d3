@@ -5,6 +5,11 @@
     "name": "Ulf Rueegg",
     "email": "uru@informatik.uni-kiel.de"
   },
+  "description": "Bridge for KLayJS and D3.js.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenKieler/klayjs-d3.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },

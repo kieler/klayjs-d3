@@ -19,12 +19,32 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
+        options: {
+          process: {
+            data: {
+              worker: "false"
+            }
+          }
+        },
         src: [
           'node_modules/klayjs/klay.js',  
           'src/**/*.js',
         ],
         dest: 'dist/<%= pkg.name %>.js'
-      }
+      },
+      dist_ww: {
+        options: {
+          process: {
+            data: {
+              worker: "true"
+            }
+          }
+        },
+        src: [
+          'src/**/*.js',
+        ],
+        dest: 'dist/<%= pkg.name %>-ww.js'
+     }  
     },
     uglify: {
       options: {
@@ -33,6 +53,10 @@ module.exports = function(grunt) {
       dist: {
         src: '<%= concat.dist.dest %>',
         dest: 'dist/<%= pkg.name %>.min.js'
+      },
+      dist_ww: {
+        src: '<%= concat.dist_ww.dest %>',
+        dest: 'dist/<%= pkg.name %>-ww.min.js'
       }
     },
     jshint: {
@@ -76,7 +100,20 @@ module.exports = function(grunt) {
         files: ['src/**/*.js'],
         tasks: ['jshint', 'concat']
       }
-    }
+    },
+    copy: {
+      main: {
+        expand: true,
+        cwd: 'node_modules/',
+        src: '**/klay.js',
+        dest: 'dist/',
+        flatten: true,
+        filter: 'isFile',
+        rename: function(dest, src) {
+          return dest + src.replace(/klay/, "klayjs-worker");
+        }
+      },
+    },
   });
 
   // These plugins provide necessary tasks.
@@ -89,6 +126,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'clean', /*'qunit',*/ 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'clean', /*'qunit',*/ 'concat', 'uglify', 'copy']);
 
 };

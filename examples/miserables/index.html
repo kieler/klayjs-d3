@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <head>
   <title>klay-d3 example</title>
-  <script type="text/javascript" src="../../dist/klayjs-d3.js"></script>
+  <script type="text/javascript" src="../../dist/klayjs-d3-ww.js"></script>
   <script type="text/javascript" src="../../bower_components/d3/d3.js"></script>
   <style>
     .node {
@@ -63,8 +63,7 @@ d3.json("miserables.json", function(error, graph) {
       .options({
         edgeRouting: "ORTHOGONAL",
         mergePorts: true
-      })
-      .start();
+      });
 
   var link = root.selectAll(".link")
       .data(graph.links)

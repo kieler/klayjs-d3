@@ -47,19 +47,27 @@ var klay;
     // a function applied after each layout run
     applyLayout = function() {},
     
-    /** the layouter instance */
-    /*layouter = klay.init({
-      onSuccess: function(kgraph) {
-        if (kgraph.id) {
-          graph = kgraph;
-          applyLayout(kgraph);
-        } else {
-          console.log(kgraph); // error
+    // the layouter instance
+    layouter = {};
+    
+    // use a worker or not?
+    if ('<%= worker %>' === 'true') {
+      var worker = new Worker(workerScriptPath + '/klayjs-worker.js'),
+      layouter = {
+        layout: function(data) {
+          worker.postMessage({
+            graph: data.graph,
+            options: data.options
+          });
         }
-      },
-      workerScript: workerScriptPath + "/klayjs-worker.js"
-    });*/
-    layouter = $klay;
+      }; 
+      worker.addEventListener('message', function (e) {
+        graph = e.data;
+        applyLayout(graph);
+      }, false);
+    } else {
+      layouter = $klay;
+    }
     
     /**
      * Setting the available area, the 
