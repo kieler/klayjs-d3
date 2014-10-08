@@ -1,6 +1,6 @@
 {
   "name": "klayjs-d3",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "author": {
     "name": "Ulf Rueegg",
     "email": "uru@informatik.uni-kiel.de"
@@ -24,5 +24,5 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.5.0"  
   },
-  "licenses": ["EPL v1.0"]
+  "license": "EPL-1.0"
 }
