@@ -6,7 +6,6 @@
   ],
   "main": "dist/klayjs-d3.min.js",
   "license": "EPL v1.0",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
