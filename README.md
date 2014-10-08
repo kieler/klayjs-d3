@@ -1,34 +1,41 @@
 KLayJS-D3
 ===
 
-A bridge between [KLayJS](http://rtsys.informatik.uni-kiel.de/confluence/x/6wOE) 
+A bridge between [KLayJS][klayjs] 
 and [D3.js](http://d3js.org/).
 
 KLayJS is a layer-based layout algorithm that is especially suited for
 node-link diagrams with an inherent direction and ports 
 (explicit attachment points on a node's border).
 
-Build
+Installation
 ===
+Either download the library from the `dist` folder or install using `npm` or `bower`.
 ```bash
-npm install
-bower install
-grunt
+bower install klayjs-d3
+```
+```bash
+npm install klayjs-d3
 ```
 
 Usage
 ===
 
-Include the js file and make sure the `klayjs-worker.js` is accessible 
-at the same path.
+If used within the browser include the library as follows. 
+You have the option to use a _web worker_ by adding a `-ww` suffix to 
+the library's name. See the documentation of [KLayJS][klayjs]
+for further information on the web worker.
 ```html
-<script type="text/javascript" src="../../dist/klayjs-d3.js"></script>
+<script type="text/javascript" src="klayjs-d3.min.js"></script>
+<!-- or using web worker:
+  <script type="text/javascript" src="klayjs-d3-ww.min.js"></script>
+-->
 ```
 
 There are two options to use the bridge. For simple, flat graphs you can 
 use the library as you are used from D3. In case your graph is 
 hierarchical (i.e. nodes can contain nodes), you have to use our
-[JSON KGraph Format](https://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/JSON+Graph+Format).
+[JSON KGraph][jsonkgraph] format.
 
 As soon as the layout process finished a callback function is invoked.
 
@@ -97,3 +104,11 @@ npm install -g http-server
 http-server .
 [open browser localhost:8080]
 ```
+
+
+[klayjs]: https://github.com/OpenKieler/klayjs
+[wiki-klay]: http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/KLay+Layered
+[wiki-layopts]: http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/KLay+Layered+Layout+Options
+[jsonkgraph]: http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/JSON+Graph+Format
+[klayjs-d3]: https://github.com/OpenKieler/klayjs-d3
+[d3js]: http://d3js.org/
