@@ -1,6 +1,6 @@
 {
   "name": "klayjs-d3",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "authors": [
     "Ulf Rueegg <uru@informatik.uni-kiel.de>"
   ],
@@ -15,6 +15,6 @@
   ],
   "dependencies": {
     "d3": "~3.4.9",
-    "klayjs": "~0.2.1"
+    "klayjs": "~0.3.0"
   }
 }
