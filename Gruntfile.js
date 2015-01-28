@@ -5,10 +5,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+    banner: '/*! <%= pkg.name %> version <%= pkg.version %> build ' +
+      '<%= grunt.template.today("yyyymmddhhmm") %>*/\n',
       //'<%= pkg.licenseText.join("") %>' +
-      ' */\n',
     // Task configuration.
     clean: [
       'dist/'

@@ -1,5 +1,4 @@
-/*! klayjs-d3 - v0.2.1 - 2014-10-08
- */
+/*! klayjs-d3 version 0.3.0 build 201501280301*/
 var klay;
 (function (klay) {
 

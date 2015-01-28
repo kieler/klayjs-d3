@@ -62,7 +62,7 @@ d3.json("miserables.json", function(error, graph) {
       .transformGroup(root)
       .options({
         edgeRouting: "ORTHOGONAL",
-        mergePorts: true
+        mergeEdges: true
       });
 
   var link = root.selectAll(".link")
