@@ -1,4 +1,4 @@
-/*! klayjs-d3 version 0.3.0 build 201501280301*/
+/*! klayjs-d3 version 0.3.1 build 201503181203*/
 var klayregister;
 var klaycallback;
 (function(){

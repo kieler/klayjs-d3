@@ -1,11 +1,12 @@
 {
   "name": "klayjs-d3",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "Ulf Rueegg",
     "email": "uru@informatik.uni-kiel.de"
   },
   "description": "Bridge for KLayJS and D3.js.",
+  "main": "dist/klayjs-d3.min.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/OpenKieler/klayjs-d3.git"
