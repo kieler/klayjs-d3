@@ -41,6 +41,17 @@ var klay;
     // a function applied after each layout run
     applyLayout = function() {},
     
+    // location of the klay.js script
+    layouterScript = function() {
+      var scripts = document.getElementsByTagName('script');
+      for (var i = 0; i < scripts.length; ++i) {
+        if (scripts[i].src.indexOf("klay.js") > -1) {
+          return scripts[i].src;
+        }
+      }
+      throw "klay.js library wasn't loaded!";  
+    },
+    
     // the layouter instance
     layouter = {};
     
@@ -51,7 +62,7 @@ var klay;
         window.alert("WebWorker not supported by browser.");
         return {};
       }  
-      var worker = new Worker(workerScriptPath + '/klayjs-worker.js'),
+      var worker = new Worker(layouterScript()),
       layouter = {
         layout: function(data) {
           worker.postMessage({
@@ -69,9 +80,15 @@ var klay;
       if (typeof module === "object" && module.exports) { 
         layouter = require("klayjs");
       } else {
-        // try to get from global scope
-        layouter = $klay;
+        // try to get from global scope, e.g. loaded by bower
+        if (typeof $klay !== "undefined") {
+          layouter = $klay;
+        } else {
+          throw "klay.js library wasn't loaded!"
+        }
       }
+    
+      
     }
     
     /**
@@ -377,21 +394,6 @@ var klay;
 
     // return the layouter object  
     return d3.rebind(d3klay, dispatch, "on");
-  }
-
-
-  // during initial execution, remember the path of 
-  // this script as we expect the worker script to be
-  // in the same directory
-  var workerScriptPath;
-  if ('<%= worker %>' === 'true') {
-    workerScriptPath = function() {
-      var scriptTag = document.getElementsByTagName('script');
-      scriptTag = scriptTag[scriptTag.length - 1]; 
-      var scriptPath = scriptTag.src; 
-      var scriptFolder = scriptPath.substr(0, scriptPath.lastIndexOf( '/' ) + 1);
-      return scriptFolder;
-    }();
   }
 
   if (typeof module === "object" && module.exports) { 

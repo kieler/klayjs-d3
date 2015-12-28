@@ -26,7 +26,6 @@ module.exports = function(grunt) {
           }
         },
         src: [
-          'node_modules/klayjs/klay.js',  
           'src/**/*.js',
         ],
         dest: 'dist/<%= pkg.name %>.js'
@@ -100,19 +99,6 @@ module.exports = function(grunt) {
         tasks: ['jshint', 'concat']
       }
     },
-    copy: {
-      main: {
-        expand: true,
-        cwd: 'node_modules/',
-        src: '**/klay.js',
-        dest: 'dist/',
-        flatten: true,
-        filter: 'isFile',
-        rename: function(dest, src) {
-          return dest + src.replace(/klay/, "klayjs-worker");
-        }
-      },
-    },
   });
 
   // These plugins provide necessary tasks.
@@ -125,6 +111,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'clean', /*'qunit',*/ 'concat', 'uglify', 'copy']);
+  grunt.registerTask('default', ['jshint', 'clean', /*'qunit',*/ 'concat', 'uglify']);
 
 };
