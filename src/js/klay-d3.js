@@ -297,18 +297,26 @@ var klay;
       var toAbsolutePositionsEdges = function(n, nodeMap) {
         // edges
         (n.edges || []).forEach(function (e) {
-          var srcNode = nodeMap[e.source].parent || {};
+          // recursively calculate the offset for the current edge
+          var parent = nodeMap[e.source].parent || {};
+          var offset = {x: 0, y: 0};
+          while (parent) {
+            offset.x += parent.x;
+            offset.y += parent.y;
+            parent = parent.parent;
+          }
+          // ... and apply it to the edge
           if (e.sourcePoint) {
-            e.sourcePoint.x += srcNode.x || 0;
-            e.sourcePoint.y += srcNode.y || 0;
+            e.sourcePoint.x += offset.x || 0;
+            e.sourcePoint.y += offset.y || 0;
           }
           if (e.targetPoint) {
-            e.targetPoint.x += srcNode.x || 0; 
-            e.targetPoint.y += srcNode.y || 0;
+            e.targetPoint.x += offset.x || 0;
+            e.targetPoint.y += offset.y || 0;
           }
-          (e.bendPoints || []).map(function (bp) {
-            return { x: bp.x + (srcNode.x || 0), 
-                     y: bp.y + (srcNode.y || 0)};
+          (e.bendPoints || []).forEach(function (bp) {
+            bp.x += offset.x;
+            bp.y += offset.y;
           });
         });
         // children
