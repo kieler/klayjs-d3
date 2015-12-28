@@ -1,0 +1,50 @@
+{
+  "name": "klayjs",
+  "version": "0.3.2",
+  "author": {
+    "name": "Ulf Rueegg",
+    "email": "uru@informatik.uni-kiel.de"
+  },
+  "description": "Automatic graph layout based on Sugiyama's algorithm. Specialized for data flow diagrams and ports.",
+  "main": "klay.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenKieler/klayjs.git"
+  },
+  "keywords": [
+    "graph",
+    "layout",
+    "layered",
+    "ports",
+    "dataflow"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-zip": "~0.13.0",
+    "grunt-curl": "~1.4.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-rename": "~0.1.3",
+    "grunt-file-append": "~0.0.6"
+  },
+  "license": "EPL-1.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/OpenKieler/klayjs",
+  "_release": "0.3.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.2",
+    "commit": "202e9ece1716316adc2406adbc90b0dab77d80a3"
+  },
+  "_source": "git://github.com/OpenKieler/klayjs.git",
+  "_target": "~0.3.0",
+  "_originalSource": "klayjs"
+}
