@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <title>klay-d3 example ports</title>
+  <script type="text/javascript" src="../../bower_components/d3/d3.js"></script>
+  <script type="text/javascript" src="../../bower_components/klayjs/klay.js"></script>
+  <script type="text/javascript" src="../../dist/klayjs-d3.js"></script>
+  <style>
+    g.leaf > rect {
+      stroke: #fff;
+      stroke-width: 1px;
+      opacity: .5;
+    }
+  
+    g.compound > rect {
+      opacity: 0.1;
+    }
+    
+    .node {
+    }
+    
+    .link {
+      stroke: #999;
+      stroke-opacity: .6;
+      fill: none;
+    }
+    
+    .port {
+      stroke: #000;
+      width: 1px;
+      opacity: .6;
+    }
+  </style>
+</head>
+<body>
+<script>
+
+function viewport() {
+  var e = window,
+    a = 'inner';
+  if (!('innerWidth' in window)) {
+    a = 'client';
+    e = document.documentElement || document.body;
+  }
+  return {
+    width: e[a + 'Width'],
+    height: e[a + 'Height']
+  }
+}
+
+var width = viewport().width,
+    height = viewport().height;
+var zoom = d3.behavior.zoom()
+    .on("zoom", redraw); 
+var idfun = function(d) { return d.id; };    
+
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .call(zoom)
+    .append("g");
+
+// group shizzle
+var root = svg.append("g");
+
+var layouter = klay.d3kgraph()
+      .size([width, height])
+      .transformGroup(root)
+      .options({
+        edgeRouting: "ORTHOGONAL"
+      });
+
+// load the data and render the elements
+d3.json("hierarchy.json", function(error, graph) {
+  
+
+  layouter.on("finish", function(d) {
+    
+    var nodes = layouter.nodes();
+    var links = layouter.links(nodes);
+    
+    var linkData = root.selectAll(".link")
+        .data(links, idfun);
+    var link = linkData.enter()
+        .append("path")
+        .attr("class", "link")
+        .attr("d", "M0 0");
+  
+    var nodeData = root.selectAll(".node")
+        .data(nodes, idfun);
+    var node = nodeData.enter()
+        .append("g")
+        .attr("class", function(d) { 
+          if (d.children) return "node compound"; else return "node leaf"; 
+        });
+        
+    var atoms = node.append("rect")
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("x", 0)
+        .attr("y", 0);
+  
+    node.append("title")
+        .text(function(d) { return d.id; });  
+        
+    // apply edge routes
+    link.transition().attr("d", function(d) {
+      var path = "";
+      path += "M" + d.sourcePoint.x + " " + d.sourcePoint.y + " ";
+        (d.bendPoints || []).forEach(function(bp, i) {
+          path += "L" + bp.x + " " + bp.y + " ";
+        });
+      path += "L" + d.targetPoint.x + " " + d.targetPoint.y + " ";
+      return path;
+    });
+    
+    // apply node positions
+    node.transition()
+      .attr("transform", function(d) { return "translate(" + (d.x || 0) + " " + (d.y || 0) + ")"});
+    
+    atoms.transition()
+      .attr("width", function(d) { return d.width; })
+      .attr("height", function(d) { return d.height; });
+  });
+  
+  layouter.kgraph(graph);
+  
+});
+
+function redraw() {
+  svg.attr("transform", "translate(" + d3.event.translate + ")" 
+                          + " scale(" + d3.event.scale + ")");
+}
+</script>
+</body>

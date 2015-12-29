@@ -1,0 +1,91 @@
+{
+    "id": "root", 
+    "children": [{
+        "id": "n1", 
+        "labels": [ { "text": "n1" } ],
+        "width": 100,
+        "height": 100,
+        "children": [{ 
+            "id": "n1_1", 
+            "labels": [ { "text": "n1_1" } ],
+            "width": 40,
+            "height": 40,
+            "children": [{ 
+                "id": "n1_1_1", 
+                "labels": [ { "text": "n1_1_1" } ],
+                "width": 40,
+                "height": 40
+            }]
+        },{
+            "id": "n1_2",
+            "labels": [ { "text": "n1_2" } ],
+            "width": 40,
+            "height": 40
+        }]
+    },{
+        "id": "n2",
+        "labels": [ { "text": "n2" } ],
+        "width": 100,
+        "height": 50,
+        "children": [{ 
+            "id": "n2_1", 
+            "labels": [ { "text": "n2_1" } ],
+            "width": 40,
+            "height": 40,
+            "children": [{ 
+                "id": "n2_1_1", 
+                "labels": [ { "text": "n2_1_1" } ],
+                "width": 40,
+                "height": 40
+            }]
+        },{
+            "id": "n2_2",
+            "labels": [ { "text": "n2_2" } ],
+            "width": 40,
+            "height": 40
+        }]
+    }],
+    "edges": [{
+        "id": "e1", 
+        "labels": [ { "text": "e1" } ],
+        "source": "n1",
+        "target": "n2"
+    },{
+        "id": "e2", 
+        "labels": [ { "text": "e2" } ],
+        "source": "n1_1_1",
+        "target": "n2_1_1"
+    },{
+        "id": "e3", 
+        "labels": [ { "text": "e3" } ],
+        "source": "n1_1",
+        "target": "n2_1_1"
+    },{
+        "id": "e4", 
+        "labels": [ { "text": "e4" } ],
+        "source": "n2_1",
+        "target": "n2_1_1"
+    },{
+        "id": "e5", 
+        "labels": [ { "text": "e5" } ],
+        "source": "n1",
+        "target": "n2_1_1"
+    },{
+        "id": "e6", 
+        "labels": [ { "text": "e6" } ],
+        "source": "n1_2",
+        "target": "n2_2"
+    },{
+        "id": "e7", 
+        "labels": [ { "text": "e7" } ],
+        "source": "n1",
+        "target": "n1_1_1"
+    },{
+        "id": "e8", 
+        "labels": [ { "text": "e8" } ],
+        "source": "n1_1_1",
+        "target": "n2_2"
+    }
+    
+    ]
+}
