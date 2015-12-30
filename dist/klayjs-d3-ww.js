@@ -1,4 +1,4 @@
-/*! klayjs-d3 version 0.3.3 build 201512290112*/
+/*! klayjs-d3 version 0.3.4 build 201512301212*/
 var klay;
 (function (klay) {
   klay.d3adapter = function() {
