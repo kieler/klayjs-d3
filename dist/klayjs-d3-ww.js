@@ -1,4 +1,4 @@
-/*! klayjs-d3 version 0.3.3 build 201512280612*/
+/*! klayjs-d3 version 0.3.4 build 201512301212*/
 var klay;
 (function (klay) {
   klay.d3adapter = function() {
@@ -295,16 +295,31 @@ var klay;
           toAbsolutePositions(c, {x: n.x, y: n.y}, nodeMap);
         });
       };
+      var isDescendant = function(node, child) {
+        var parent = child.parent;
+        while (parent) {
+          if (parent == node) {
+            return true;
+          }
+          parent = parent.parent;
+        }
+        return false;
+      }
       var toAbsolutePositionsEdges = function(n, nodeMap) {
         // edges
         (n.edges || []).forEach(function (e) {
-          // recursively calculate the offset for the current edge
-          var parent = nodeMap[e.source].parent || {};
+          // transform edge coordinates to absolute coordinates. Note that
+          //  node coordinates are already absolute and that
+          //  edge coordinates are relative to the source node's parent node
+          //  (unless the target node is a descendant of the source node)
+          var srcNode = nodeMap[e.source];
+          var tgtNode = nodeMap[e.target];
+          var relative = isDescendant(srcNode, tgtNode) ?
+                          srcNode : srcNode.parent;
           var offset = {x: 0, y: 0};
-          while (parent) {
-            offset.x += parent.x;
-            offset.y += parent.y;
-            parent = parent.parent;
+          if (relative) {
+            offset.x = relative.x;
+            offset.y = relative.y;
           }
           // ... and apply it to the edge
           if (e.sourcePoint) {
