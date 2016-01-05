@@ -47,15 +47,11 @@ var klay;
       throw "klay.js library wasn't loaded!";
     },
     // the layouter instance
-    layouter = {};
-    // use a worker or not?
-    if ('<%= worker %>' === 'true') {
-      // check if web worker is available
-      if (typeof window == 'undefined' || typeof window.Worker !== "function") {
-        window.alert("WebWorker not supported by browser.");
-        return {};
-      }
-      var worker = new Worker(layouterScript()),
+    layouter;
+    
+    // try to use a worker?
+    if ('<%= worker %>' === 'true' && typeof(Worker) !== 'undefined') {
+      var worker = new Worker(layouterScript());
       layouter = {
         layout: function(data) {
           worker.postMessage({
@@ -68,7 +64,10 @@ var klay;
         graph = e.data;
         applyLayout(graph);
       }, false);
-    } else {
+    } 
+
+    // either we don't want a worker or the worker is not available
+    if (!layouter) {
       if (typeof module === "object" && module.exports) {
         layouter = require("klayjs");
       } else {
