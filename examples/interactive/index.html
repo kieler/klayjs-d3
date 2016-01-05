@@ -9,6 +9,11 @@
     #content {
       margin-top: 5px;
     }
+    
+    dl {
+      margin-bottom: 5px;
+    }
+    
     g.leaf > rect {
       stroke: #fff;
       stroke-width: 1px;
@@ -37,24 +42,51 @@
 </head>
 <body>
   <div class="container">
-    <h1>KlayJS Interactive Layout Example</h1>
-    <p>
-      In the initial arrangement (fixed) node n4 is at the left side and n6 is at the top.
-    </p>
-    <p>
-      After layer preserving layout n6 remains above n3 even though the edge points upwards.
-      The order of the nodes is not preserved though, whereby n6 is on the left of n1 after layout.
-    </p>
-    <p>
-      After order preserving layout n4 remains on the left even though the edge (n3, n4) 
-      crosses with (n2, n5).
-      The layering is not preserved, n6 is at the bottom of n3 now with its edge pointing downwards.
-    </p>
+    <h1>klay.js Interactive Layout Example</h1>
+    This small example demonstrates the <em>interactive layout</em> capabilities of klay.js.
+    Note that by interactivity we don't mean user interaction but 
+    consideration of previous positions by the layout algorithm.
+    <ul>
+      <dt>Fixed</dt>
+      <dl>
+        In the initial arrangement (fixed) node n4 is left of n5 and n6 is at the top.
+      </dl>
+      
+      <dt>Automatic</dt>
+      <dl>
+        The algorithm can position every node and edge as it likes.
+      </dl>
+      
+      <dt>Layer Preserving</dt>
+      <dl>
+        In a top-to-bottom layout, a <em>layer</em> is a row in which nodes are placed. 
+        No pair of connected nodes is allowed to be placed in the same layer.
+        After layer preserving layout n6 remains above n3 even though the edge points upwards.
+        The order of the nodes is not preserved though, whereby n6 is on the left of n1 after layout.
+      </dl>
+      
+      <dt>Order Preserving</dt>
+      <dl>
+        After order preserving layout n4 remains on the left even though the edge (n3, n4) 
+        crosses with (n2, n5).
+        The layering is not preserved, n6 is at the bottom of n3 now with its edge pointing downwards.
+      </dl>
+      
+      <dt>Layer & Order Preserving</dt>
+      <dl>
+        The algorithm guarantees that n6 remains at the top
+        and that n4 remains at the left of n5.
+      </dl>
+    </ul>
+      
+
     <button onclick="layoutFix();">Fixed</button>
+    <button onclick="layout();">Automatic</button>
     <button onclick="layoutLayerPreserve();">Layer Preserving</button>
     <button onclick="layoutOrderPreserve();">Order Preserving</button>
+    <button onclick="layoutLayerAndOrderPreserve();">Layer & Order Preserving</button>
     <div id="content">
-    <script type="text/javascript" src="index.js"></script>
+      <script type="text/javascript" src="index.js"></script>
     </div>
   </div>
 </body>
