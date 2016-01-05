@@ -27,7 +27,7 @@ the library's name. See the documentation of [KLayJS][klayjs]
 for further information on the web worker.
 ```html
 <script type="text/javascript" src="klayjs-d3.min.js"></script>
-<!-- or using web worker:
+<!-- or using a web worker:
   <script type="text/javascript" src="klayjs-d3-ww.min.js"></script>
 -->
 ```
@@ -92,9 +92,10 @@ Examples
 ===
 
 Running Examples:
-- [Miserables](http://openkieler.github.io/klayjs-d3/examples/miserables/) (Data From D3 Force Example)
 - [Ports](http://openkieler.github.io/klayjs-d3/examples/ports/)
 - [Hierarchy](http://openkieler.github.io/klayjs-d3/examples/hierarchy/)
+- [Interactive](http://openkieler.github.io/klayjs-d3/examples/interactive/)
+- [Miserables](http://openkieler.github.io/klayjs-d3/examples/miserables/) (Data From D3 Force Example)
 
 See the `examples` folder.
 
