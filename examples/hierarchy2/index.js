@@ -31,11 +31,10 @@ var layouter = klay.d3kgraph()
       .options({
         layoutHierarchy: true,
         intCoordinates: true,
-        direction: "DOWN",
+        direction: "RIGHT",
         edgeRouting: "ORTHOGONAL",
         nodeLayering: "NETWORK_SIMPLEX",
         nodePlace: "BRANDES_KOEPF",
-        fixedAlignment: "NONE",
         crossMin: "LAYER_SWEEP",
         algorithm: "de.cau.cs.kieler.klay.layered"
       });
