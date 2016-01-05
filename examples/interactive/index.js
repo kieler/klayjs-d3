@@ -7,7 +7,7 @@ function viewport() {
   }
   return {
     width: e[a + 'Width'],
-    height: e[a + 'Height']
+    height: e[a + 'Height'] - 450
   }
 }
 
@@ -29,24 +29,43 @@ var options = {
       algorithm: "de.cau.cs.kieler.fixed",
       layoutHierarchy: false
     },
+    auto: {
+      algorithm: "de.cau.cs.kieler.klay.layered",
+      spacing: 10,
+      layoutHierarchy: true,
+      intCoordinates: true,
+      direction: "DOWN",
+      edgeRouting: "ORTHOGONAL",
+    },
     layer: {
       algorithm: "de.cau.cs.kieler.klay.layered",
+      spacing: 10,
       layoutHierarchy: true,
       intCoordinates: true,
       direction: "DOWN",
       edgeRouting: "ORTHOGONAL",
       cycleBreaking: "INTERACTIVE",
       nodeLayering: "INTERACTIVE",
-      separateConnComp: false
     },
     order: {
       algorithm: "de.cau.cs.kieler.klay.layered",
+      spacing: 10,
       layoutHierarchy: true,
       intCoordinates: true,
       direction: "DOWN",
       edgeRouting: "ORTHOGONAL",
       crossMin: "INTERACTIVE",
-      separateConnComp: false
+    },
+    layerOrder: {
+      algorithm: "de.cau.cs.kieler.klay.layered",
+      spacing: 10,
+      layoutHierarchy: true,
+      intCoordinates: true,
+      direction: "DOWN",
+      edgeRouting: "ORTHOGONAL",
+      cycleBreaking: "INTERACTIVE",
+      nodeLayering: "INTERACTIVE",
+      crossMin: "INTERACTIVE",
     }
 };
 
@@ -178,6 +197,22 @@ function layoutOrderPreserve() {
   clearBendpoints(layoutGraph);
   
   layouter.options(options.order)
+          .kgraph(layoutGraph);
+}
+
+function layoutLayerAndOrderPreserve() {
+  applyInitialCoordinates(layoutGraph);
+  clearBendpoints(layoutGraph);
+  
+  layouter.options(options.layerOrder)
+          .kgraph(layoutGraph);
+}
+
+function layout() {
+  applyInitialCoordinates(layoutGraph);
+  clearBendpoints(layoutGraph);
+  
+  layouter.options(options.auto)
           .kgraph(layoutGraph);
 }
 
