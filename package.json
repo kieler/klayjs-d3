@@ -15,7 +15,8 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "klayjs": ">= 0.3.0"
+    "d3": ">=3.4.0",
+    "klayjs": ">= 0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
