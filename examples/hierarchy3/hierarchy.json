@@ -7,7 +7,7 @@
         "height": 100,
         "children": [{ 
             "id": "n1_1", 
-            "labels": [ { "text": "n1_1" } ],
+            "labels": [ { "text": "n2_1" } ],
             "width": 40,
             "height": 40,
             "children": [{ 
@@ -85,6 +85,11 @@
         "labels": [ { "text": "e8" } ],
         "source": "n1_1_1",
         "target": "n2_2"
+    },{
+        "id": "e9", 
+        "labels": [ { "text": "e9" } ],
+        "source": "n1_1",
+        "target": "n1_1_1"
     }
     
     ]

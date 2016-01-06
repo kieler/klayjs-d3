@@ -7,7 +7,7 @@ function viewport() {
   }
   return {
     width: e[a + 'Width'],
-    height: e[a + 'Height'] - 450
+    height: Math.max(400, e[a + 'Height'] - 450)
   }
 }
 
@@ -116,18 +116,18 @@ d3.json("./interactive.json", function(error, graph) {
             return "node leaf";
         });
     
+    // add representing boxes for nodes
+    var box = node.append("rect")
+        .attr("class", "atom")
+        .attr("width", 0)
+        .attr("height", 0);
+
     // add node labels
     node.append("text")
         .attr("x", 2.5)
         .attr("y", 6.5)
         .text(function(d) { return d.id; })
         .attr("font-size", "4px");
-    
-    // and their representing boxes ...
-    var box = node.append("rect")
-        .attr("class", "atom")
-        .attr("width", 0)
-        .attr("height", 0);
 
 
     // #2 add paths with arrows for the edges

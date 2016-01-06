@@ -19,6 +19,10 @@
       stroke-width: 1px;
       opacity: .5;
     }
+    
+    g.leaf > text {
+      fill: #ffffff;
+    }
   
     g.compound > rect {
       opacity: 0.1;
@@ -49,7 +53,9 @@
     <ul>
       <dt>Fixed</dt>
       <dl>
-        In the initial arrangement (fixed) node n4 is left of n5 and n6 is at the top.
+        In the initial arrangement, specified by a user or application, node n4 is left of n5 and n6 is at the top.
+        The positions serve as basis for the following configurations (except automatic).
+        Our algorithm respects the positions and only re-calculates sizes for the compound nodes root and g0.
       </dl>
       
       <dt>Automatic</dt>
