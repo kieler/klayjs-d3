@@ -1,6 +1,6 @@
 {
   "name": "klayjs",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "author": {
     "name": "Ulf Rueegg",
     "email": "uru@informatik.uni-kiel.de"
@@ -38,13 +38,13 @@
     "tests"
   ],
   "homepage": "https://github.com/OpenKieler/klayjs",
-  "_release": "0.3.2",
+  "_release": "0.4.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.2",
-    "commit": "202e9ece1716316adc2406adbc90b0dab77d80a3"
+    "tag": "0.4.0",
+    "commit": "d2b68e7e773b88a373431c21c4f945385af28ab2"
   },
   "_source": "git://github.com/OpenKieler/klayjs.git",
-  "_target": "~0.3.0",
+  "_target": ">=0.4.0",
   "_originalSource": "klayjs"
 }
