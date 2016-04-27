@@ -95,6 +95,7 @@ Running Examples:
 - [Ports](http://openkieler.github.io/klayjs-d3/examples/ports/)
 - [Hierarchy](http://openkieler.github.io/klayjs-d3/examples/hierarchy/)
 - [Interactive](http://openkieler.github.io/klayjs-d3/examples/interactive/)
+- [Padding](http://openkieler.github.io/klayjs-d3/examples/padding/)
 - [Miserables](http://openkieler.github.io/klayjs-d3/examples/miserables/) (Data From D3 Force Example)
 
 See the `examples` folder.
