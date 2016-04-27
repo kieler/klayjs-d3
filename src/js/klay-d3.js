@@ -287,10 +287,16 @@ var klay;
         n.x = (n.x || 0) + offset.x;
         n.y = (n.y || 0) + offset.y;
         nodeMap[n.id] = n;
+        // the offset for the children has to include padding
+        var childOffset = {x: n.x, y: n.y};
+        if (n.padding) {
+          childOffset.x += n.padding.left || 0;
+          childOffset.y += n.padding.top || 0;
+        }
         // children
         (n.children || []).forEach(function(c) {
           c.parent = n;
-          toAbsolutePositions(c, {x: n.x, y: n.y}, nodeMap);
+          toAbsolutePositions(c, childOffset, nodeMap);
         });
       };
       var isDescendant = function(node, child) {
@@ -318,6 +324,10 @@ var klay;
           if (relative) {
             offset.x = relative.x;
             offset.y = relative.y;
+          }
+          if (relative.padding) {
+            offset.x += relative.padding.left || 0;
+            offset.y += relative.padding.top || 0;
           }
           // ... and apply it to the edge
           if (e.sourcePoint) {
