@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <script type="text/javascript" src="../../bower_components/d3/d3.js"></script>
+  <script type="text/javascript" src="../../bower_components/klayjs/klay.js"></script>
+  <script type="text/javascript" src="../../dist/klayjs-d3-ww.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <style>
+    #content {
+      margin-top: 5px;
+    }
+    
+    dl {
+      margin-bottom: 5px;
+    }
+    
+    g.leaf > rect {
+      stroke: #fff;
+      stroke-width: 1px;
+      opacity: .5;
+    }
+    
+    g.leaf > text {
+      fill: #ffffff;
+    }
+  
+    g.compound > rect {
+      opacity: 0.1;
+    }
+    
+    .node {
+    }
+    
+    .link {
+      stroke: #999;
+      stroke-opacity: .6;
+      fill: none;
+    }
+    
+    .port {
+      stroke: #000;
+      width: 1px;
+      opacity: .6;
+    }
+    
+    pre {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>klay.js Padding Example</h1>
+    <p>
+    In the example below, the node <code>g0</code> has <code>padding</code> values specified:
+    <pre>
+"padding": {
+  "left": 5,
+  "top": 20,
+  "right": 10,
+  "bottom": 5
+}</pre><br />
+    Note how there is additional space above <code>n1</code> 
+    and more space to <code>g0</code>'s right border than to its left border.
+    </p>
+    
+    <div id="content">
+      <script type="text/javascript" src="index.js"></script>
+    </div>
+  </div>
+</body>
