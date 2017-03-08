@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <script type="text/javascript" src="../../bower_components/d3/d3.js"></script>
+  <script type="text/javascript" src="../../bower_components/klayjs/klay.js"></script>
+  <script type="text/javascript" src="../../dist/klayjs-d3-ww.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <style>
+    #content {
+      margin-top: 15px;
+    }
+    
+    dl {
+      margin-bottom: 5px;
+    }
+    
+    input[type="radio"] {
+      margin-left: 10px; 
+      margin-right: 2px;
+    }
+    
+    g.leaf > rect {
+      stroke: #fff;
+      stroke-width: 1px;
+      opacity: .5;
+    }
+    
+    g.leaf > text {
+      fill: #ffffff;
+    }
+  
+    g.compound > rect {
+      opacity: 0.3;
+    }
+    
+    .node {
+    }
+    
+    .link {
+      stroke: #999;
+      stroke-opacity: .6;
+      fill: none;
+    }
+    
+   .label {
+      alignment-baseline: hanging;
+      font-size: 5px;
+    } 
+    
+    pre {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" class="container">
+    <h1>klay.js Node Label Placement Example</h1>
+    <p>
+      Use the radio buttons below to change between different node label placement strategies. 
+      The layout option <code>de.cau.cs.kieler.nodeLabelPlacement</code> is a combination 
+      of three components: the <em>vertical</em> alignment, the <em>horizontal</em> alignment,
+      and whether the label should be placed inside or outside of the node.
+      Not every combination makes sense though. A label placed on the outside cannot be 
+      centered in both dimensions.
+    </p>
+   
+    <p>
+      The layout algorithm computes a position for the <em>top-left</em> corner of the label. 
+      This has to be considered whenever labels are positioned with a different reference point,
+      which is the default behavior of SVGs, for instance. 
+      The rendering below should look fine in Chrome since the <code>alignment-baseline: hanging;</code>
+      attribute is interpreted correctly. In Firefox the labels seem to be positioned too high (currently).
+      Additionally note that the layout algorithm is not able to compute the dimensions of a label,
+      as it isn't aware of the used font size and font family.
+    </p>
+
+    <p>
+      <fieldset>
+        <input onclick="update();" type="radio" name="vert" value="V_TOP">V_TOP</input>
+        <input onclick="update();" type="radio" name="vert" value="V_CENTER" checked="checked">V_CENTER</input>
+        <input onclick="update();" type="radio" name="vert" value="V_BOTTOM">V_BOTTOM</input>
+      </fieldset>
+    </p>
+    
+    <p>
+      <fieldset>
+        <input onclick="update();" type="radio" name="hori" value="H_LEFT">H_LEFT</input>
+        <input onclick="update();" type="radio" name="hori" value="H_CENTER" checked="checked">H_CENTER</input>
+        <input onclick="update();" type="radio" name="hori" value="H_RIGHT">H_RIGHT</input>
+      </fieldset>
+    </p>
+    
+    <p>
+      <fieldset>
+        <input onclick="update();" type="radio" name="io" value="INSIDE" checked="checked">INSIDE</input>
+        <input onclick="update();" type="radio" name="io" value="OUTSIDE">OUTSIDE</input>
+      </fieldset>
+    </p>
+    
+    <div id="content">
+      <script type="text/javascript" src="index.js"></script>
+    </div>
+  </div>
+</body>

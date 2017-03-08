@@ -1,0 +1,27 @@
+{
+    "id": "",
+    "x": 0,
+    "y": 0,
+    "children": [{
+        "id": "g0",
+        "labels": [ { "text": "g0", "width": 5, "height": 5 } ],
+        "width": 60,
+        "height": 40,
+        "properties": {
+            "nodeLabelPlacement": "INSIDE V_CENTER H_CENTER"
+        }
+    },{
+        "id": "g1",
+        "labels": [ { "text": "g1", "width": 5, "height": 5 } ],
+        "width": 60,
+        "height": 40,
+        "properties": {
+            "nodeLabelPlacement": "INSIDE V_CENTER H_CENTER"
+        }
+    }],
+    "edges": [{
+        "id": "e1",
+        "source": "g0",
+        "target": "g1"
+    }]
+}

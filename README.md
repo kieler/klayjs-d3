@@ -96,6 +96,7 @@ Running Examples:
 - [Hierarchy](http://openkieler.github.io/klayjs-d3/examples/hierarchy/)
 - [Interactive](http://openkieler.github.io/klayjs-d3/examples/interactive/)
 - [Padding](http://openkieler.github.io/klayjs-d3/examples/padding/)
+- [Node Label Placement](http://openkieler.github.io/klayjs-d3/examples/node_labels/)
 - [Miserables](http://openkieler.github.io/klayjs-d3/examples/miserables/) (Data From D3 Force Example)
 
 See the `examples` folder.
