@@ -9,7 +9,7 @@
   "main": "dist/klayjs-d3.min.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OpenKieler/klayjs-d3.git"
+    "url": "https://github.com/kieler/klayjs-d3.git"
   },
   "engines": {
     "node": ">= 0.10.0"

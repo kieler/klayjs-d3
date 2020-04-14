@@ -92,12 +92,12 @@ Examples
 ===
 
 Running Examples:
-- [Ports](http://openkieler.github.io/klayjs-d3/examples/ports/)
-- [Hierarchy](http://openkieler.github.io/klayjs-d3/examples/hierarchy/)
-- [Interactive](http://openkieler.github.io/klayjs-d3/examples/interactive/)
-- [Padding](http://openkieler.github.io/klayjs-d3/examples/padding/)
-- [Node Label Placement](http://openkieler.github.io/klayjs-d3/examples/node_labels/)
-- [Miserables](http://openkieler.github.io/klayjs-d3/examples/miserables/) (Data From D3 Force Example)
+- [Ports](http://kieler.github.io/klayjs-d3/examples/ports/)
+- [Hierarchy](http://kieler.github.io/klayjs-d3/examples/hierarchy/)
+- [Interactive](http://kieler.github.io/klayjs-d3/examples/interactive/)
+- [Padding](http://kieler.github.io/klayjs-d3/examples/padding/)
+- [Node Label Placement](http://kieler.github.io/klayjs-d3/examples/node_labels/)
+- [Miserables](http://kieler.github.io/klayjs-d3/examples/miserables/) (Data From D3 Force Example)
 
 See the `examples` folder.
 
@@ -110,9 +110,9 @@ http-server .
 ```
 
 
-[klayjs]: https://github.com/OpenKieler/klayjs
+[klayjs]: https://github.com/Kieler/klayjs
 [wiki-klay]: http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/KLay+Layered
 [wiki-layopts]: http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/KLay+Layered+Layout+Options
 [jsonkgraph]: http://rtsys.informatik.uni-kiel.de/confluence/display/KIELER/JSON+Graph+Format
-[klayjs-d3]: https://github.com/OpenKieler/klayjs-d3
+[klayjs-d3]: https://github.com/Kieler/klayjs-d3
 [d3js]: http://d3js.org/
